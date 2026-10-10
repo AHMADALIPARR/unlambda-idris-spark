@@ -2,6 +2,9 @@
 
 ## Purpose
 
+Delivery status, acceptance gates, and the current implementation backlog are
+tracked in [the delivery workflow](docs/DELIVERY.md).
+
 A minimal proof-oriented starter showing the split between an Idris 2 control/semantic model and an Ada/SPARK heap contract. It deliberately does not claim to be a complete Unlambda interpreter or a completed cross-language proof.
 
 ## Supplied ATS runtime design

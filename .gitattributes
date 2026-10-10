@@ -1,0 +1,5 @@
+* text=auto
+*.sh text eol=lf
+*.idr text eol=lf
+*.sats text eol=lf
+*.dats text eol=lf
