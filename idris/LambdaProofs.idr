@@ -6,6 +6,10 @@ module LambdaProofs
 public export
 data Lambda = Free Nat | Bound Nat | Lam Lambda | App Lambda Lambda
 
+predecessor : Nat -> Nat
+predecessor Z = Z
+predecessor (S n) = n
+
 ||| Shift bound indices at or above a cutoff when entering binders.
 public export
 shift : Nat -> Nat -> Lambda -> Lambda
@@ -27,7 +31,7 @@ substitute depth argument (Bound index) =
   case compare index depth of
     LT => Bound index
     EQ => shift depth Z argument
-    GT => Bound (pred index)
+    GT => Bound (predecessor index)
 substitute depth argument (Lam body) =
   Lam (substitute (S depth) argument body)
 substitute depth argument (App fun arg) =
@@ -68,7 +72,7 @@ data BetaSteps : Lambda -> Lambda -> Type where
 
 ||| I x -> x for every symbolic free atom x.
 public export
-iBeta : (x : Nat) -> BetaStep (App identity (Free x)) (Free x)
+iBeta : (x : Nat) -> BetaStep (App LambdaProofs.identity (Free x)) (Free x)
 iBeta x = Contract (Bound 0) (Free x)
 
 ||| Substitution under a binder must lift a bound argument to avoid capture.
@@ -89,7 +93,7 @@ outerIndexDecremented = Refl
 ||| K x y -> x, with two explicit contractions.
 public export
 kBeta : (x, y : Nat) ->
-        BetaSteps (App (App constant (Free x)) (Free y)) (Free x)
+        BetaSteps (App (App LambdaProofs.constant (Free x)) (Free y)) (Free x)
 kBeta x y =
   Then (InFunction (Contract (Lam (Bound 1)) (Free x)) (Free y))
        (Then (Contract (Free x) (Free y)) Done)
@@ -97,7 +101,7 @@ kBeta x y =
 ||| S x y z -> (x z) (y z), with three explicit contractions.
 public export
 sBeta : (x, y, z : Nat) ->
-        BetaSteps (App (App (App substitutionCombinator (Free x))
+        BetaSteps (App (App (App LambdaProofs.substitutionCombinator (Free x))
                            (Free y)) (Free z))
                   (App (App (Free x) (Free z)) (App (Free y) (Free z)))
 sBeta x y z =

@@ -29,8 +29,9 @@ Status: implementation and release preparation in progress; no production releas
 - Ada heap is an allocation counter; it has no node slots or generation handles.
 - ATS files are interface sketches, not compilable runtime modules.
 - No executable interpreter or behavioral test suite exists yet.
-- No Git remote is configured. GitHub CLI is authenticated locally. Upload to
-  `AHMADALIPARR/unlambda-idris-spark` is awaiting explicit destination approval.
+- Private GitHub repository and `origin` configured:
+  https://github.com/AHMADALIPARR/unlambda-idris-spark.
+  The owner explicitly approved the push; the Idris workflow is active.
 - ATS, Idris 2, and GNATprove are absent from the current PATH. Git's bundled
   Bash is available at `C:/Program Files/Git/bin/bash.exe`.
 - WSL has no usable installed distribution in the current environment.
@@ -60,5 +61,5 @@ Production platform and packaging remain to be decided.
   `OutOfMemory` and exact fuel-consumption obligations.
 - CI definition bootstraps pinned Idris 2 and retains typechecker logs.
 - Local whitespace and Bash syntax checks pass. Compiler validation is pending.
-- Automatic review blocked the GitHub upload because the specific destination
-  was not explicitly authorized. No source was uploaded and no remote created.
+- GitHub upload completed after the owner's explicit approval. The first Idris
+  run is bootstrapping the pinned compiler; typechecking results are pending.
