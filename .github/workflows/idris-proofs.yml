@@ -47,9 +47,22 @@ jobs:
           cd idris
           idris2 --total --check LambdaProofs.idr 2>&1 | tee ../build/reports/lambda-typecheck.txt
           idris2 --total --check Main.idr 2>&1 | tee ../build/reports/model-typecheck.txt
+      - name: Compile and smoke-test the current control model
+        run: |
+          export PATH="$HOME/.idris2/bin:$PATH"
+          set -o pipefail
+          cd idris
+          idris2 --total -o control-model Main.idr 2>&1 | tee ../build/reports/model-build.txt
+          build/exec/control-model | tee ../build/reports/model-smoke.txt
+          test "$(cat ../build/reports/model-smoke.txt)" = 'step: advanced'
       - name: Preserve typechecker evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: idris-typecheck-evidence
           path: build/reports/
+      - name: Preserve the prototype control-model executable
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: idris-control-model-ubuntu24
+          path: idris/build/exec/

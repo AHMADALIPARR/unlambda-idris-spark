@@ -9,7 +9,7 @@ data Status = Running | Halted | OutOfFuel | OutOfMemory | Failed
 
 ||| Minimal control term for the first machine milestone.
 ||| Extend only after the selected Unlambda dialect is specified.
-data Term = PrimI | PrimK | PrimS | Apply Term Term | Delay Term
+data Term = PrimI | PrimK | PrimS | Apply Term Term | DelayedTerm Term
 
 record Machine where
   constructor MkMachine

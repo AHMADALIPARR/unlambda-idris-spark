@@ -1,4 +1,5 @@
 /build/
+/idris/build/
 __pycache__/
 *.pyc
 /agent_hooks.sh
