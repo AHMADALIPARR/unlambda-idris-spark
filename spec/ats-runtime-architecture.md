@@ -2,7 +2,11 @@
 
 Supplied design notes. These describe intended behavior and proof obligations;
 they do not claim that the current starter implements or verifies them.
-The `ats/heap.sats` and `ats/state.sats` files are supplied interface sketches.
+The `ats/heap.sats` and `ats/state.sats` files now contain compiler-validated
+typed interfaces derived from the supplied sketches. Original shorthand files
+are preserved in `docs/source-sketches/`. No ATS runtime implementation exists
+yet. [Validation evidence](../docs/verification/ats-spark-af40c4e.md) defines the
+checked scope.
 
 ## Language semantics — Unlambda 2.0.0
 

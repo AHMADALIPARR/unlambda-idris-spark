@@ -27,7 +27,10 @@ Status: implementation and release preparation in progress; no production releas
 
 - Idris `stepControl` consumes fuel but does not evaluate terms.
 - Ada heap is an allocation counter; it has no node slots or generation handles.
-- ATS files are interface sketches, not compilable runtime modules.
+  The counter implementation compiles, passes exhaustion/reset tests, and has
+  all six GNATprove checks discharged.
+- ATS files are now typed, compiler-validated interfaces. There are no ATS
+  runtime implementations or heap adapter yet.
 - No executable Unlambda interpreter exists yet. The Idris control-model
   executable now builds and passes a smoke test in CI.
 - Private GitHub repository and `origin` configured:
@@ -67,5 +70,19 @@ Production platform and packaging remain to be decided.
 - Idris 2 0.8.0 typechecked the lambda proofs and control model, compiled the
   model program, and passed its smoke test at commit `bb9abcc`.
   [Recorded evidence](verification/idris-bb9abcc.md) links the successful run.
-- Heap safety, the ATS runtime, SPARK proofs, correspondence, and production
-  packaging remain open. This compiler result does not pass those release gates.
+- SPARK proves the allocation-counter heap's current contracts. The generation
+  slot-map required by gate A is still open.
+- ATS interface validation passes; the ATS runtime, correspondence, and
+  production packaging remain open.
+
+## ATS/SPARK validation increment
+
+- Replaced invalid ATS shorthand with typed interfaces; preserved originals.
+- Strengthened allocation's contract to require success whenever capacity remains.
+- Added assertion-enabled tests for all 64 allocations, exhaustion, reset, and reuse.
+- Ran GNAT 13.3.0 and checksum-pinned GNATprove distribution 15.1.0.
+- Proved all six checks; no unproved or justified checks, warnings, or assumptions.
+- [Verification report](verification/ats-spark-af40c4e.md) records source commit,
+  source hashes, toolchains, CI runs, proof scope, and remaining certification work.
+- `verify.sh` now checks ATS interfaces, Idris proofs/executable, Ada tests, and
+  GNATprove with unproved checks and warnings treated as errors.

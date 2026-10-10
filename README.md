@@ -19,9 +19,11 @@ and the current control model; it does not certify the ATS runtime or SPARK heap
 
 The [ATS runtime specification](spec/ats-runtime-architecture.md) records the
 supplied Unlambda semantics, abstract machine, heap invariants, and verification
-gates. The original architecture document is in `docs/`; the supplied heap and
-state interface sketches are in `ats/`. These additions are design materials
-and have not been compiler-validated.
+gates. The original architecture document is in `docs/`. The shorthand heap and
+state sketches have been converted into typed ATS interfaces in `ats/` and
+validated by ATS/Postiats 0.4.2. Original sketches are preserved in
+`docs/source-sketches/`. The interfaces declare operations; their runtime
+implementations and ATS-to-Ada adapter remain to be written.
 
 ## Starter toolchain
 
@@ -39,8 +41,11 @@ and have not been compiler-validated.
 GitHub CI uses pinned Idris 2 0.8.0 to typecheck `LambdaProofs.idr` and
 `Main.idr`, compile the control-model program, and check its expected output.
 [Recorded compiler evidence](docs/verification/idris-bb9abcc.md) documents the
-passing increment. The Ada/SPARK and ATS portions have not yet passed their
-compiler/proof gates; this is not a production or cross-language verified release.
+passing increment. [ATS/SPARK verification evidence](docs/verification/ats-spark-af40c4e.md)
+records passing interface checks, Ada compilation, capacity/reset tests, and all
+six GNATprove checks for the current allocation-counter heap. This establishes
+the checked component scope; it does not certify a full Unlambda runtime or
+cross-language correspondence.
 
 ## Important next steps
 
