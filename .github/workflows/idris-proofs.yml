@@ -32,6 +32,12 @@ jobs:
           git checkout 15a3e4e70843f7a34100f6470c04b791330788df
           make bootstrap SCHEME=chezscheme
           make install
+      - name: Save compiler before checking project proofs
+        if: steps.idris-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: ~/.idris2
+          key: idris2-ubuntu24-15a3e4e70843f7a34100f6470c04b791330788df-v1
       - name: Check handwritten proof terms and model
         run: |
           export PATH="$HOME/.idris2/bin:$PATH"
