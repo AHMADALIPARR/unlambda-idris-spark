@@ -4,7 +4,15 @@
 
 A minimal proof-oriented starter showing the split between an Idris 2 control/semantic model and an Ada/SPARK heap contract. It deliberately does not claim to be a complete Unlambda interpreter or a completed cross-language proof.
 
-## Toolchain
+## Supplied ATS runtime design
+
+The [ATS runtime specification](spec/ats-runtime-architecture.md) records the
+supplied Unlambda semantics, abstract machine, heap invariants, and verification
+gates. The original architecture document is in `docs/`; the supplied heap and
+state interface sketches are in `ats/`. These additions are design materials
+and have not been compiler-validated.
+
+## Starter toolchain
 
 - Idris 2
 - GNAT toolchain and GNATprove
