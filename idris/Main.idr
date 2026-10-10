@@ -21,10 +21,16 @@ record Machine where
 data Transition = Advanced Machine | Finished Machine
 
 ||| Fuel is consumed exactly once for an ordinary transition.
+consumeRunning : Term -> Nat -> Machine
+consumeRunning t Z = MkMachine t Z OutOfFuel
+consumeRunning t (S k) = MkMachine t k Running
+
 consumeFuel : Machine -> Machine
-consumeFuel (MkMachine t Z Running) = MkMachine t Z OutOfFuel
-consumeFuel (MkMachine t (S k) Running) = MkMachine t k Running
-consumeFuel (MkMachine t n s) = MkMachine t n s
+consumeFuel (MkMachine t n Running) = consumeRunning t n
+consumeFuel (MkMachine t n Halted) = MkMachine t n Halted
+consumeFuel (MkMachine t n OutOfFuel) = MkMachine t n OutOfFuel
+consumeFuel (MkMachine t n OutOfMemory) = MkMachine t n OutOfMemory
+consumeFuel (MkMachine t n Failed) = MkMachine t n Failed
 
 ||| The transition function is intentionally a control-model stub until
 ||| the full Unlambda operational semantics are fixed in spec/.
