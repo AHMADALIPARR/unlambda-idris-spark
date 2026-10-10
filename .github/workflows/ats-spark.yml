@@ -1,0 +1,88 @@
+name: ATS and SPARK validation
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ats:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Install ATS compiler
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ats2-lang=0.4.2-1.1 build-essential
+      - name: Typecheck supplied ATS interfaces
+        run: |
+          mkdir -p build/reports/ats
+          set -o pipefail
+          patsopt --version | tee build/reports/ats/version.txt
+          patsopt -tc -s ats/heap.sats 2>&1 | tee build/reports/ats/heap-typecheck.txt
+          patsopt -tc -s ats/state.sats 2>&1 | tee build/reports/ats/state-typecheck.txt
+      - name: Preserve ATS evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: ats-validation-evidence
+          path: build/reports/ats/
+  spark:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Install native Ada compiler
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gnat gprbuild
+      - name: Restore pinned SPARK toolchain
+        id: spark-cache
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: ~/.local/gnatprove-15.1.0
+          key: gnatprove-linux-aad9a73f600d3008-v1
+      - name: Install checksum-verified GNATprove
+        if: steps.spark-cache.outputs.cache-hit != 'true'
+        run: |
+          curl --fail --location --retry 3 \
+            https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnatprove-15.1.0-1/gnatprove-x86_64-linux-15.1.0-1.tar.gz \
+            -o "$RUNNER_TEMP/gnatprove.tar.gz"
+          echo "aad9a73f600d3008f33141a6cd4c5314d4c210e8928edc172c23c76104ddf7b2  $RUNNER_TEMP/gnatprove.tar.gz" | sha256sum --check
+          mkdir -p "$HOME/.local/gnatprove-15.1.0"
+          tar -xzf "$RUNNER_TEMP/gnatprove.tar.gz" --strip-components=1 -C "$HOME/.local/gnatprove-15.1.0"
+      - name: Save prover before running project checks
+        if: steps.spark-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: ~/.local/gnatprove-15.1.0
+          key: gnatprove-linux-aad9a73f600d3008-v1
+      - name: Build and run heap smoke test
+        run: |
+          mkdir -p build/reports/spark
+          set -o pipefail
+          gnat --version | tee build/reports/spark/compiler-version.txt
+          gprbuild -p -P ada/heap_model.gpr 2>&1 | tee build/reports/spark/build.txt
+          build/heap_demo | tee build/reports/spark/smoke.txt
+          test "$(cat build/reports/spark/smoke.txt)" = 'heap contract smoke test: PASS'
+      - name: Prove all heap obligations and fail on unproved checks
+        run: |
+          export PATH="$HOME/.local/gnatprove-15.1.0/bin:$PATH"
+          mkdir -p build/reports/spark
+          set -o pipefail
+          gnatprove --version | tee build/reports/spark/prover-version.txt
+          gnatprove -P ada/heap_model.gpr -u heap_model.adb --mode=all \
+            --checks-as-errors=on --warnings=error --report=all --level=2 \
+            2>&1 | tee build/reports/spark/proof.txt
+      - name: Preserve SPARK evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: spark-validation-evidence
+          path: |
+            build/reports/spark/
+            build/ada_obj/gnatprove/
