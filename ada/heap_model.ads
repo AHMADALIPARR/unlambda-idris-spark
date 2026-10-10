@@ -14,6 +14,7 @@ package Heap_Model with SPARK_Mode is
      with
        Pre  => Used (H) <= Capacity,
        Post =>
+         Success = (Used (H'Old) < Capacity) and then
          (if Success then Used (H) = Used (H'Old) + 1
           else Used (H) = Used (H'Old));
 
