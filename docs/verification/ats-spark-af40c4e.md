@@ -1,3 +1,9 @@
+<!--
+Copyright (c) 2026 Ahmad Ali Parr. All rights reserved.
+SPDX-License-Identifier: LicenseRef-Proprietary
+Public source visibility does not grant an open-source license. See LICENSE.
+-->
+
 # ATS/SPARK verification report
 
 Checked source commit: `af40c4e75c51c4dfc636b3eaa53f2362ffae0c4a`.

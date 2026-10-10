@@ -1,3 +1,7 @@
+-- Copyright (c) 2026 Ahmad Ali Parr. All rights reserved.
+-- SPDX-License-Identifier: LicenseRef-Proprietary
+-- Public source visibility does not grant an open-source license. See LICENSE.
+
 package body Heap_Model with SPARK_Mode is
 
    function Used (H : Heap) return Count is (H.Allocated);

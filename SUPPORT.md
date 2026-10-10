@@ -1,3 +1,9 @@
+<!--
+Copyright (c) 2026 Ahmad Ali Parr. All rights reserved.
+SPDX-License-Identifier: LicenseRef-Proprietary
+Public source visibility does not grant an open-source license. See LICENSE.
+-->
+
 # Support and donations
 
 [![Donate](https://img.shields.io/badge/donate-details_pending-d97706)](https://github.com/AHMADALIPARR)

@@ -1,3 +1,9 @@
+<!--
+Copyright (c) 2026 Ahmad Ali Parr. All rights reserved.
+SPDX-License-Identifier: LicenseRef-Proprietary
+Public source visibility does not grant an open-source license. See LICENSE.
+-->
+
 # Security policy
 
 ## Supported scope
@@ -7,7 +13,7 @@
 | v1.0.x | Maintainer triage for the verification scaffold and build/proof workflow |
 | Unreleased runtime designs | Design review; no supported deployed interpreter |
 
-The repository is private. v1 contains interfaces, a proof/control model, and an
+The repository is public and source-visible. v1 contains interfaces, a proof/control model, and an
 allocation counter. It is not a sandbox for executing untrusted Unlambda code.
 Passing typechecks and the counter's SPARK proofs do not establish security of
 an interpreter, an FFI adapter, or a production deployment.

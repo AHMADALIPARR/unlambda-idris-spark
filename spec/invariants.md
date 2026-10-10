@@ -1,3 +1,9 @@
+<!--
+Copyright (c) 2026 Ahmad Ali Parr. All rights reserved.
+SPDX-License-Identifier: LicenseRef-Proprietary
+Public source visibility does not grant an open-source license. See LICENSE.
+-->
+
 # Unlambda / Idris 2 / SPARK verification contract
 
 ## Scope of this executable slice

@@ -1,3 +1,9 @@
+<!--
+Copyright (c) 2026 Ahmad Ali Parr. All rights reserved.
+SPDX-License-Identifier: LicenseRef-Proprietary
+Public source visibility does not grant an open-source license. See LICENSE.
+-->
+
 # Visual assets
 
 These AI-generated conceptual photographs illustrate the project. They are
@@ -7,8 +13,8 @@ are decorative.
 
 Generated with the built-in imagegen tool. The selected PNG outputs are stored
 in this repository; no external image-generation account or file URL is required
-to render the README. Original-code/artwork licensing remains subject to the
-owner's decision recorded in `LICENSING.md`.
+to render the README. Applicable rights in project artwork are reserved under
+[LICENSE](../../LICENSE); see [LICENSING.md](../../LICENSING.md).
 
 ## `proof-workbench.png`
 

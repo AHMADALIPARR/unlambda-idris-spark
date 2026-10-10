@@ -1,3 +1,7 @@
+# Copyright (c) 2026 Ahmad Ali Parr. All rights reserved.
+# SPDX-License-Identifier: LicenseRef-Proprietary
+# Public source visibility does not grant an open-source license. See LICENSE.
+
 # Copy to agent_hooks.sh and replace the bodies with your local agent integration.
 # Do not source unreviewed hook scripts: they execute with your user permissions.
 

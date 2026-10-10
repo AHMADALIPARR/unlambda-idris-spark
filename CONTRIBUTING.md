@@ -1,7 +1,13 @@
+<!--
+Copyright (c) 2026 Ahmad Ali Parr. All rights reserved.
+SPDX-License-Identifier: LicenseRef-Proprietary
+Public source visibility does not grant an open-source license. See LICENSE.
+-->
+
 # Contributing
 
-This private repository develops a combined Unlambda/ATS/Idris/SPARK
-verification scaffold. Contributors need repository access. Start with the
+This public, proprietary source-visible repository develops a combined Unlambda/ATS/Idris/SPARK
+verification scaffold. Review [LICENSE](LICENSE) before proposing contributions. Start with the
 [workflow](docs/WORKFLOW.md), [current evidence](docs/verification/ats-spark-af40c4e.md),
 and [delivery gates](docs/DELIVERY.md).
 
@@ -54,7 +60,7 @@ that one language's tool verifies the other language's implementation.
 - Reports and release notes distinguish checked scope from future work.
 - Contributions identify their authorship and any third-party license obligations.
 
-License terms for original project code are awaiting maintainer confirmation;
+Original project code is proprietary and source-visible, not open source;
 see [LICENSING.md](LICENSING.md). Do not assume a copyright transfer or commercial
 relicensing grant. Discuss the applicable contribution terms with the maintainer
 before contributing third-party material. Report sensitive issues through

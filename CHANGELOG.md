@@ -1,4 +1,15 @@
+<!--
+Copyright (c) 2026 Ahmad Ali Parr. All rights reserved.
+SPDX-License-Identifier: LicenseRef-Proprietary
+Public source visibility does not grant an open-source license. See LICENSE.
+-->
+
 # Changelog
+
+## Unreleased
+
+- Declare original project material proprietary and publicly source-visible, not open source; add license headers and the root LICENSE notice.
+- Update public repository and commercial permission documentation; preserve third-party archives and published v1.0.0 assets.
 
 ## v1.0.0 — Verification scaffold
 

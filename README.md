@@ -1,3 +1,9 @@
+<!--
+Copyright (c) 2026 Ahmad Ali Parr. All rights reserved.
+SPDX-License-Identifier: LicenseRef-Proprietary
+Public source visibility does not grant an open-source license. See LICENSE.
+-->
+
 # Unlambda + ATS + Idris 2 + SPARK
 
 **Handwritten lambda-calculus derivations, checked proof terms, and explicit verification boundaries.**
@@ -8,6 +14,7 @@
 [![Counter proof](https://img.shields.io/badge/SPARK_counter_snapshot-6%2F6_proved-15803d)](docs/verification/ats-spark-af40c4e.md)
 [![Security](https://img.shields.io/badge/security-report_privately-475569)](SECURITY.md)
 [![Commercial licensing](https://img.shields.io/badge/commercial-licensing_inquiries-7c3aed)](COMMERCIAL-LICENSING.md)
+[![License: proprietary](https://img.shields.io/badge/license-proprietary_source_visible-334155)](LICENSE)
 [![Donate](https://img.shields.io/badge/donate-details_pending-d97706)](SUPPORT.md)
 
 ![Conceptual proof workbench with a lambda-calculus notebook and translucent geometric objects](docs/assets/proof-workbench.png)
@@ -68,7 +75,7 @@ cd unlambda-idris-spark
 bash verify.sh
 ```
 
-The repository is private; cloning requires access. A passing run checks the
+The repository is public and source-visible; it is proprietary, not open source. A passing run checks the
 ATS declarations, typechecks and compiles the Idris model, runs the Ada tests,
 and requires GNATprove to discharge the heap checks. The success message names
 that component scope explicitly.

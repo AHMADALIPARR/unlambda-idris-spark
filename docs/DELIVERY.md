@@ -1,3 +1,9 @@
+<!--
+Copyright (c) 2026 Ahmad Ali Parr. All rights reserved.
+SPDX-License-Identifier: LicenseRef-Proprietary
+Public source visibility does not grant an open-source license. See LICENSE.
+-->
+
 # Delivery workflow
 
 Lead: Codex, during active working sessions. Product owner: repository owner.
@@ -95,5 +101,6 @@ validated scaffold, with documentation, evidence, and checksums. It does not
 mark runtime or production gates A–R complete. Repository description/topics,
 CI/evidence badges, Mermaid flowcharts, conceptual images, contributing and
 security policies, licensing-inquiry information, and support documentation
-are included. Commercial license selection and a donation destination remain
-owner decisions; neither is fabricated by the release.
+are included. Current original source is proprietary and source-visible under
+[LICENSE](../LICENSE). Negotiated commercial terms and a donation destination
+remain owner decisions.

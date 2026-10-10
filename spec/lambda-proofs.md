@@ -1,3 +1,9 @@
+<!--
+Copyright (c) 2026 Ahmad Ali Parr. All rights reserved.
+SPDX-License-Identifier: LicenseRef-Proprietary
+Public source visibility does not grant an open-source license. See LICENSE.
+-->
+
 # Handwritten lambda-calculus proofs: pure SKI fragment
 
 Application associates to the left. Bound variables are alpha-renamed to avoid

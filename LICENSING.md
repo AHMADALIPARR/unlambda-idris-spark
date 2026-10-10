@@ -1,28 +1,29 @@
-# Licensing status and provenance
+# Licensing and provenance
 
-No open-source or commercial license grant for this project's original code has
-been selected by the owner yet. This document records that status; it does not
-grant permission or substitute for a license agreement. The v1 release remains
-in the private repository.
+This is a **proprietary, publicly source-visible project, not open source**.
+Original project material is covered by [LICENSE](LICENSE). Copyright (c) 2026
+Ahmad Ali Parr. All rights reserved. Public visibility does not grant a general
+license to use, modify, redistribute, or commercialize that material. Separate
+written permission is required except for rights provided by applicable law or
+GitHub's platform terms, including its public-repository viewing and forking rights.
+See [GitHub's licensing guidance](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository).
 
-The supplied architecture notes identify the intended dialect as Unlambda 2.0.0
-and mention GPL-2.0-or-later for upstream material from madore.org. That reference
-does not automatically license new ATS, Idris, Ada, documentation, or artwork in
-this repository, nor does it establish provenance of every supplied file.
-Original supplied sketches are preserved in `docs/source-sketches/`.
+Source headers use `SPDX-License-Identifier: LicenseRef-Proprietary`, a custom
+identifier referring to the root notice rather than an open-source license.
+The root notice also covers original documentation and applicable rights in
+project assets; PNG files and the machine-readable VERSION file remain intact.
 
-Before adopting a project-wide license or distributing third-party material,
-record its authorship and applicable rights. Any actual upstream code or text
-retains its own applicable notices and terms. Toolchain licenses are separate
-from project licensing; using a compiler or prover does not select this project's
-license.
+The supplied architecture notes mention Unlambda 2.0.0 and GPL-2.0-or-later
+for upstream material from madore.org. Any actual third-party material retains
+its own applicable notices and rights; this proprietary notice cannot override
+those terms. Compiler and prover licenses are separate from project licensing.
 
-Commercial licensing inquiries are described in
-[COMMERCIAL-LICENSING.md](COMMERCIAL-LICENSING.md). A future dual-license policy
-must name the covered original files, confirm the necessary rights, and include
-the actual chosen license texts. See the
-[GitHub licensing guidance](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)
-for project license selection. The
-[GNU GPL FAQ](https://www.gnu.org/licenses/gpl-faq.html#DoesTheGPLAllowMoney)
-explains that GPL licensing can permit commercial use; an inquiry badge does not
-mean every GPL use requires a separate commercial agreement.
+Original supplied sketches in `docs/source-sketches/` and the archived
+`docs/unlambda_x5f_ats_x5f_runtime_x5f_architecture.html` are preserved without
+new ownership headers. Their provenance must be established before incorporating
+third-party implementations or redistributing third-party material.
+
+For separately negotiated permissions, see
+[COMMERCIAL-LICENSING.md](COMMERCIAL-LICENSING.md). No standard commercial grant,
+price, warranty, or support commitment is implied. Published v1.0.0 source and
+evidence archives remain unchanged; current headers do not rewrite that snapshot.

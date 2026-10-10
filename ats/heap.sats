@@ -1,3 +1,9 @@
+(*
+Copyright (c) 2026 Ahmad Ali Parr. All rights reserved.
+SPDX-License-Identifier: LicenseRef-Proprietary
+Public source visibility does not grant an open-source license. See LICENSE.
+*)
+
 (* Typed contract for the planned heap adapter. Implementations are pending. *)
 abstype heap = ptr
 abstype node_ref = ptr

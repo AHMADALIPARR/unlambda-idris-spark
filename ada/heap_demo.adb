@@ -1,3 +1,7 @@
+-- Copyright (c) 2026 Ahmad Ali Parr. All rights reserved.
+-- SPDX-License-Identifier: LicenseRef-Proprietary
+-- Public source visibility does not grant an open-source license. See LICENSE.
+
 with Ada.Text_IO; use Ada.Text_IO;
 with Heap_Model;
 
