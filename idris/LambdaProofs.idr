@@ -71,6 +71,21 @@ public export
 iBeta : (x : Nat) -> BetaStep (App identity (Free x)) (Free x)
 iBeta x = Contract (Bound 0) (Free x)
 
+||| Substitution under a binder must lift a bound argument to avoid capture.
+public export
+captureAvoidance : substitute Z (Bound 0) (Lam (Bound 1)) = Lam (Bound 1)
+captureAvoidance = Refl
+
+||| The inner binder's variable remains untouched by outer substitution.
+public export
+innerBinderPreserved : substitute Z (Free 7) (Lam (Bound 0)) = Lam (Bound 0)
+innerBinderPreserved = Refl
+
+||| Removing a binder decrements references to enclosing binders.
+public export
+outerIndexDecremented : substitute Z (Free 7) (Bound 2) = Bound 1
+outerIndexDecremented = Refl
+
 ||| K x y -> x, with two explicit contractions.
 public export
 kBeta : (x, y : Nat) ->
