@@ -36,7 +36,11 @@ and have not been compiler-validated.
 ./verify.sh
 ```
 
-The current execution environment did not have Idris 2 or GNATprove installed, so the source files have not been compiler-validated here. Treat this as a starter scaffold requiring a local compile/proof pass, not as a verified release.
+GitHub CI uses pinned Idris 2 0.8.0 to typecheck `LambdaProofs.idr` and
+`Main.idr`, compile the control-model program, and check its expected output.
+[Recorded compiler evidence](docs/verification/idris-bb9abcc.md) documents the
+passing increment. The Ada/SPARK and ATS portions have not yet passed their
+compiler/proof gates; this is not a production or cross-language verified release.
 
 ## Important next steps
 

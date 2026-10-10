@@ -28,7 +28,8 @@ Status: implementation and release preparation in progress; no production releas
 - Idris `stepControl` consumes fuel but does not evaluate terms.
 - Ada heap is an allocation counter; it has no node slots or generation handles.
 - ATS files are interface sketches, not compilable runtime modules.
-- No executable interpreter or behavioral test suite exists yet.
+- No executable Unlambda interpreter exists yet. The Idris control-model
+  executable now builds and passes a smoke test in CI.
 - Private GitHub repository and `origin` configured:
   https://github.com/AHMADALIPARR/unlambda-idris-spark.
   The owner explicitly approved the push; the Idris workflow is active.
@@ -60,6 +61,11 @@ Production platform and packaging remain to be decided.
 - Corrected the original fuel theorem's successor inequality; added explicit
   `OutOfMemory` and exact fuel-consumption obligations.
 - CI definition bootstraps pinned Idris 2 and retains typechecker logs.
-- Local whitespace and Bash syntax checks pass. Compiler validation is pending.
-- GitHub upload completed after the owner's explicit approval. The first Idris
-  run is bootstrapping the pinned compiler; typechecking results are pending.
+- Local whitespace and Bash syntax checks pass; source scan finds no prohibited
+  proof escape hatches in Idris, Ada, or ATS files.
+- GitHub upload completed after the owner's explicit approval.
+- Idris 2 0.8.0 typechecked the lambda proofs and control model, compiled the
+  model program, and passed its smoke test at commit `bb9abcc`.
+  [Recorded evidence](verification/idris-bb9abcc.md) links the successful run.
+- Heap safety, the ATS runtime, SPARK proofs, correspondence, and production
+  packaging remain open. This compiler result does not pass those release gates.
