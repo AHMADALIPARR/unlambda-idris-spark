@@ -86,3 +86,45 @@ jobs:
           path: |
             build/reports/spark/
             build/ada_obj/gnatprove/
+  combined:
+    needs: [ats, spark]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Install combined compiler dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ats2-lang=0.4.2-1.1 gnat gprbuild chezscheme build-essential libgmp-dev
+      - name: Restore pinned Idris compiler
+        id: combined-idris
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: ~/.idris2
+          key: idris2-ubuntu24-15a3e4e70843f7a34100f6470c04b791330788df-v1
+      - name: Bootstrap Idris if cache was evicted
+        if: steps.combined-idris.outputs.cache-hit != 'true'
+        run: |
+          git clone https://github.com/idris-lang/Idris2.git "$RUNNER_TEMP/Idris2"
+          cd "$RUNNER_TEMP/Idris2"
+          git checkout 15a3e4e70843f7a34100f6470c04b791330788df
+          make bootstrap SCHEME=chezscheme
+          make install
+      - name: Restore SPARK toolchain validated by prerequisite job
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: ~/.local/gnatprove-15.1.0
+          key: gnatprove-linux-aad9a73f600d3008-v1
+          fail-on-cache-miss: true
+      - name: Run the complete checked-component entry point
+        run: |
+          export PATH="$HOME/.idris2/bin:$HOME/.local/gnatprove-15.1.0/bin:$PATH"
+          mkdir -p build/reports
+          set -o pipefail
+          bash verify.sh 2>&1 | tee build/reports/combined.txt
+      - name: Preserve combined evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: combined-validation-evidence
+          path: build/reports/combined.txt
