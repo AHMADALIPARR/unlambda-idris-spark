@@ -24,6 +24,7 @@ fi
 mkdir -p "$ROOT/build"
 cd "$IDRIS_DIR"
 idris2 --total --check Main.idr
+idris2 --total --check LambdaProofs.idr
 idris2 --total -o unlambda_model Main.idr
 
 cd "$ADA_DIR"

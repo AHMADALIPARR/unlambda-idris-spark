@@ -15,7 +15,7 @@ Status: implementation and release preparation in progress; no production releas
 
 | Gate | Work | Required evidence | State |
 | --- | --- | --- | --- |
-| 0 | Freeze implementation language, target platform, dialect and licensing | Product decisions; authoritative semantics; license provenance | Open |
+| 0 | Combined ATS runtime, Idris semantic proofs, SPARK heap; freeze platform, dialect and licensing | Product decisions; authoritative semantics; license provenance | Architecture confirmed; remaining decisions open |
 | A | Bounded slot-map heap with generations | Allocation exhaustion, reuse, stale lookup/update, invariant tests | Open |
 | B | Parser and core machine: s,k,i,v,d,output,newline | Compiler success; strictness, delay, output order, fuel tests | Open |
 | C | Continuations, exit and input primitives | Capture/restore, EOF, current-character, input order tests | Open |
@@ -43,6 +43,8 @@ and a recorded passing release-gate result. Design documents alone do not pass a
 
 ## Next increment
 
-Resolve gate 0 while preparing tooling. Then implement and test gate A before
-connecting the parser and core machine. Confirm whether production means an ATS
-CLI release, an Idris/SPARK runtime, or a hosted service before choosing packaging.
+Architecture confirmed by the owner: ATS runtime, handwritten lambda-calculus
+derivations formalized in Idris 2, and SPARK-verified heap contracts. The Idris
+program/models must typecheck. Begin with the explicit SKI proof terms and
+compiler workflow, then implement gate A before connecting the core machine.
+Production platform and packaging remain to be decided.

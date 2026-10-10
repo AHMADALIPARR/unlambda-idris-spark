@@ -1,11 +1,19 @@
-# Unlambda + Idris 2 + SPARK verification starter
+# Unlambda + ATS + Idris 2 + SPARK
 
 ## Purpose
 
 Delivery status, acceptance gates, and the current implementation backlog are
 tracked in [the delivery workflow](docs/DELIVERY.md).
 
-A minimal proof-oriented starter showing the split between an Idris 2 control/semantic model and an Ada/SPARK heap contract. It deliberately does not claim to be a complete Unlambda interpreter or a completed cross-language proof.
+The target architecture combines an ATS Unlambda runtime, handwritten
+lambda-calculus derivations formalized in Idris 2, and Ada heap contracts
+verified by SPARK. Idris 2 typechecks the semantic models and proof terms.
+The runtime-to-model correspondence is a separate required obligation.
+This repository is under implementation and is not yet a production interpreter.
+
+The [handwritten SKI derivations](spec/lambda-proofs.md) correspond to explicit
+proof terms in `idris/LambdaProofs.idr`. The Idris CI workflow typechecks them
+and the current control model; it does not certify the ATS runtime or SPARK heap.
 
 ## Supplied ATS runtime design
 
@@ -18,6 +26,7 @@ and have not been compiler-validated.
 ## Starter toolchain
 
 - Idris 2
+- ATS 2 / Postiats for the runtime
 - GNAT toolchain and GNATprove
 - Bash, grep
 
