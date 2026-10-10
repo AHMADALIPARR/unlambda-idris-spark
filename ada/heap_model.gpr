@@ -1,0 +1,9 @@
+project Heap_Model is
+   for Source_Dirs use (".");
+   for Main use ("heap_demo.adb");
+   for Object_Dir use "../build/ada_obj";
+   for Exec_Dir use "../build";
+   package Compiler is
+      for Switches ("Ada") use ("-gnat2022", "-gnata");
+   end Compiler;
+end Heap_Model;
