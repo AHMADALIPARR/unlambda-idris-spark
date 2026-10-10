@@ -1,7 +1,8 @@
 # Delivery workflow
 
 Lead: Codex, during active working sessions. Product owner: repository owner.
-Status: implementation and release preparation in progress; no production release.
+Status: v1.0.0 verification-scaffold packaging; implementation continues and no
+production interpreter release is certified.
 
 ## Working cycle
 
@@ -86,3 +87,13 @@ Production platform and packaging remain to be decided.
   source hashes, toolchains, CI runs, proof scope, and remaining certification work.
 - `verify.sh` now checks ATS interfaces, Idris proofs/executable, Ada tests, and
   GNATprove with unproved checks and warnings treated as errors.
+
+## v1.0.0 release scope
+
+The owner requested a v1 release of the current repository. It packages the
+validated scaffold, with documentation, evidence, and checksums. It does not
+mark runtime or production gates A–R complete. Repository description/topics,
+CI/evidence badges, Mermaid flowcharts, conceptual images, contributing and
+security policies, licensing-inquiry information, and support documentation
+are included. Commercial license selection and a donation destination remain
+owner decisions; neither is fabricated by the release.
